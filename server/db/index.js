@@ -13,4 +13,4 @@ var db = new Sequelize(dbURI, {
 // associations
 
 
-export default db;
+module.exports = db;

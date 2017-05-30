@@ -1,8 +1,8 @@
 
-import express from 'express';
-import path from 'path';
-import bodyParser from 'body-parser';
-import morgan from 'morgan';
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 const app = express();
 

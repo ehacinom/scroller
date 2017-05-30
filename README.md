@@ -7,7 +7,7 @@ npm init // make package.json
 // in browser/js/ app.js for webpack
 createdb scroller
 
-npm i --save express morgan
+npm i --save express morgan body-parser express-session passport object-encrypt-decrypt
 npm i --save react redux react-router react-redux redux-logger redux-thunk 
 npm i --save pg pg-hstore sequelize
-npm i --save-dev webpack babel-core babel-loader babel-preset-react babel-preset-es2015 babel-cli babel-preset-env webpack-dev-server
+npm i --save-dev webpack babel-core babel-loader babel-preset-react babel-preset-es2015

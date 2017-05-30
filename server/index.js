@@ -1,7 +1,7 @@
 
-import db from './db';
-import app from './app');
-import { PORT } from '../secrets_constants';
+const db = require('./db');
+const app = require('./app');
+const { PORT } = require('../secrets_constants');
 
 var server = app.listen(PORT, (err) => {
     if (err) throw err;
@@ -11,4 +11,4 @@ var server = app.listen(PORT, (err) => {
     })
 })
 
-export default server;
+module.exports = server;

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
-const hasher = require('object-encrypt-decrypt');
+const hasher = require('object-encrypt-decrypt'); // not good way
 
 // passport
 router.use(passport.initialize());
