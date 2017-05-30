@@ -12,16 +12,24 @@ app.use(bodyParser.urlencoded({ extended : false }));
 app.use(morgan('tiny'));
 app.use(require('./session.middleware'));
 app.use(require('./passport.middleware'));
-app.use('/public', express.static(path.join(__dirname, '..', '..', 'browser')))
 
 // routers
-app.use('/', (req, res, next) => {
-    res.send('yay!');
-})
 app.use('/api', require('../api'));
 app.use('/auth', require('../auth'));
 
-// error
+// front end
+const validFrontEndRoutes = ['/'];
+const indexPath = path.join(__dirname, '..', '..', 'browser', 'index.html');
+validFrontEndRoutes.forEach(route => {
+    console.log(route)
+    app.get(route, (req, res, next) => {
+        res.sendFile(indexPath);
+    })
+});
+
+// middleware
+// WARNING this makes static files have the "error" title text
+app.use('/static', require('./static.middleware'));
 app.use(require('./error.middleware'));
 
 module.exports = app;

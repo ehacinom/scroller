@@ -1,7 +1,7 @@
 module.exports = {
     entry: './browser/js/app.js', // the starting point for our program
     output: {
-        path: __dirname + '/browser', // the absolute path for the directory where we want the output to be placed
+        path: __dirname + '/browser/js', // the absolute path for the directory where we want the output to be placed
         filename: 'bundle.js'
     },
     context: __dirname,
