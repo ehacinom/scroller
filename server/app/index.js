@@ -18,7 +18,7 @@ app.use('/api', require('../api'));
 app.use('/auth', require('../auth'));
 
 // front end
-const validFrontEndRoutes = ['/'];
+const validFrontEndRoutes = ['/', '/user', '/user/:userId', '/login', '/signup'];
 const indexPath = path.join(__dirname, '..', '..', 'browser', 'index.html');
 validFrontEndRoutes.forEach(route => {
     console.log(route)
