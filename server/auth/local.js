@@ -3,21 +3,35 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../db/User');
 const router = require('express').Router();
 
-passport.use(new LocalStrategy((email, password, done) => {
-    User.findOne( { email : email } )
-        .then(user => {
-            if (!user) done(null, false);
-            else if (!user.verifyPassword(password)) done(null, false);
-            else done(null, user);
-        })
-        .catch(done)
-}));
+// login
+passport.use('local-login', new LocalStrategy({
+        usernameField : 'email',
+        passwordField : 'password',
+    }, (email, password, done) => {
+        User.findOne( { where : { email } } )
+            .then(user => {
+                if (!user) done(null, false);
+                else if (user.verifyPassword(password)) done(null, user);
+                else done(null, false);
+            })
+            .catch(done);
+    }
+));
 
-router.get('/', (req, res, next) => {
-    passport.authenticate('local', {
-        successRedirect : '/user/' + req.user.id,
-        failureRedirect : '/login'
-    })
-})
+// signup
+passport.use('local-signup', new LocalStrategy({
+        usernameField : 'email',
+        passwordField : 'password',
+    }, (email, password, done) => {
+        User.findOrCreate( { where : { email } } )
+            .spread((user, created) => {
+                if (created) done(null, user);
+                else if (user.verifyPassword(password)) done(null, user);
+                else done(null, false);
+            })
+            .catch(done);
+    }
+));
+
 
 module.exports = router;

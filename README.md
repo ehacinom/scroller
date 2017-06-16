@@ -8,9 +8,10 @@ npm init // make package.json
 createdb scroller
 
 
-npm i --save express morgan body-parser 
+npm i --save express morgan body-parser axios
 npm i --save express-session passport passport-local 
-npm i --save react redux react-router react-redux redux-logger redux-thunk 
+npm i --save react react-dom redux react-redux redux-logger redux-thunk 
+npm i --save react-router@3.0.5  // NOTE REACT ROUTER v3 not 4 or 5!!
 npm i --save pg pg-hstore sequelize
 npm i --save jquery bootstrap
 npm i --save-dev webpack babel-core babel-loader babel-preset-react babel-preset-es2015
